@@ -3,7 +3,7 @@ class COUNTING_SORT {
 	public static void main(String[] args) {
 		int[] A = {2,5,3,0,2,3,0,3};
 		int[] B = new int[A.length];
-		int k = maxVal(A);
+		int k = MAXIMUM(A);
 		
 		int[] sortedArray = COUNTING_SORT(A, B, k);
 		for (int i = 0; i < sortedArray.length; i++) {
@@ -36,14 +36,14 @@ class COUNTING_SORT {
 		return B;
 	}
 	
-	public static int maxVal(int[] A){
-		int maximum = A[0];
+	public static int MAXIMUM(int[] A){
+		int max = A[0];
 		for (int i=1; i<A.length; i++) {
-			if (A[i]>maximum) {
-				maximum = A[i];
+			if (A[i]>max) {
+				max = A[i];
 			}
 		}
-		return maximum;
+		return max;
 	}
 	
 }

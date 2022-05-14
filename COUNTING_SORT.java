@@ -38,7 +38,7 @@ class COUNTING_SORT {
 	
 	public static int maxVal(int[] A){
 		int maximum = A[0];
-		for (int i=0; i<A.length; i++) {
+		for (int i=1; i<A.length; i++) {
 			if (A[i]>maximum) {
 				maximum = A[i];
 			}

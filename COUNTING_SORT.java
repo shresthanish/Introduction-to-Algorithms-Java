@@ -1,4 +1,5 @@
 class COUNTING_SORT {
+	
 	public static void main(String[] args) {
 		int[] A = {2,5,3,0,2,3,0,3};
 		int[] B = new int[A.length];
@@ -9,6 +10,7 @@ class COUNTING_SORT {
 			System.out.print(sortedArray[i]+ " ");
 		}
 	}
+	
 	public static int[] COUNTING_SORT(int[] A, int[] B, int k)
 	{
 		int[] C = new int[k+1];

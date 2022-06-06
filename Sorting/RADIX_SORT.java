@@ -3,14 +3,14 @@ class Sorting {
 		int[] A = {329,457,657,839,436,720,355};
 		int d = 1+(int)Math.floor(Math.log10(MAXIMUM(A)));
 		
-		int[] storedArray = RADIXSORT(A,d);
+		int[] storedArray = RADIX_SORT(A,d);
 		
 		for (int i = 0; i < storedArray.length; i++) {
 			System.out.print(storedArray[i]+ " ");
 		}
 	}
 	
-	public static int[] RADIXSORT(int[] A,int d){
+	public static int[] RADIX_SORT(int[] A,int d){
 		
 		int[] B = new int[A.length];
 		int[] tempArray = new int[A.length];

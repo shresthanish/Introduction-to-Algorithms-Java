@@ -1,8 +1,7 @@
 class Sorting {
 	public static void main(String[] args) {
 		int[] A = { 9, 4, 8, 1, 7, 90, 3, 2, 35, 6};
-		int length = 10;
-		MERGE_SORT(A, 0, 9);
+		MERGE_SORT(A, 0, A.length-1);
 		
 		for (int i = 0; i < A.length; i++) {
 			System.out.print(A[i]+" ");

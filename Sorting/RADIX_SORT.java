@@ -1,6 +1,8 @@
 class Sorting {
 	public static void main(String[] args) {
 		int[] A = {329,457,657,839,436,720,355};
+		
+		//number of digits
 		int d = 1+(int)Math.floor(Math.log10(MAXIMUM(A)));
 		
 		int[] storedArray = RADIX_SORT(A,d);

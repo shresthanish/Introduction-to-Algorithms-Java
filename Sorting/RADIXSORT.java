@@ -13,13 +13,13 @@ class Sorting {
 	public static int[] RADIXSORT(int[] A,int d){
 		
 		int[] B = new int[A.length];
-		int[] storedArray = new int[A.length];
+		int[] tempArray = new int[A.length];
 		int k = MAXIMUM(A);
 		
 		for (int i = 0; i < d; i++) {
-			storedArray = COUNTING_SORT(A, B, k);
+			tempArray = COUNTING_SORT(A, B, k);
 		}
-		return storedArray;
+		return tempArray;
 	}
 	
 	public static int[] COUNTING_SORT(int[] A, int[] B, int k)

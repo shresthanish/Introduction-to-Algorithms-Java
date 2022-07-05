@@ -31,7 +31,7 @@ class COUNTING_SORT {
 		// C[i] now contains the number of elements less than or equal to i.
 		for (int j = A.length-1; j>=0; j--) {
 			B[C[A[j]]-1] = A[j];
-			C[A[j]]=C[A[j]]-1;
+			C[A[j]]=C[A[j]]-1; 
 		}
 		return B;
 	}

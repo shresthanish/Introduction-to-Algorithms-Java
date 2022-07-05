@@ -29,7 +29,7 @@ class Sorting {
 	
 	public static int RANDOMIZED_PARTITION(int A[], int p, int r){
 		int i = RANDOM(p,r);
-		exchange(A, r, i);
+		exchange(A, r, i); 
 		return PARTITION(A, p, r);
 	}
 	

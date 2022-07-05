@@ -30,7 +30,7 @@ class Sorting {
 		
 		for (int i=0; i<=k; i++) {
 			C[i]=0;
-		}
+		} 
 		
 		for (int j=0; j<A.length; j++) {
 			C[A[j]] = C[A[j]]+1;

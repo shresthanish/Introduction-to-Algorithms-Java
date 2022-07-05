@@ -27,7 +27,7 @@ class Sorting {
 		}
 		exchange(A, i+1, r);
 		return i+1;
-	}
+	} 
 	
 	public static void exchange(int A[], int i, int j){
 		int tempValue = A[i];

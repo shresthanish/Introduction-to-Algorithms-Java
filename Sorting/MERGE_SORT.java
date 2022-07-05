@@ -31,7 +31,7 @@ class Sorting {
 				i= i+1;
 				
 			} else if (L[i] <= R[j]) {
-				A[k]=L[i];
+				A[k]=L[i]; 
 				i= i+1;
 				
 			} else {

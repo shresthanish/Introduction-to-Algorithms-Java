@@ -16,7 +16,7 @@ class COUNTING_SORT {
 		int[] C = new int[k+1];
 		
 		for (int i=0; i<=k; i++) {
-			C[i]=0;
+			C[i]=0; 
 		}
 		
 		for (int j=0; j<A.length; j++) {

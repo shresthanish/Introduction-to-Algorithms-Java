@@ -48,7 +48,8 @@ public class HEAPSORT {
             maxHeapify(A, 0,heapSize);
         }
     }
-
+    
+    //Testing
     public static void main(String[] args) {
         int[] A = {4,1,3,2,16,9,10,14,8,7,5};
         //Sorting using Heapsort

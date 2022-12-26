@@ -52,7 +52,7 @@ public class HEAPSORT {
     //Testing
     public static void main(String[] args) {
         int[] A = {4,1,3,2,16,9,10,14,8,7,5};
-        //Sorting using Heapsort
+        //Sorting array A
         HeapSort(A);
         for (int k : A) {
             System.out.print(k+ " ");

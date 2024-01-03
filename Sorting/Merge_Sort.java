@@ -6,9 +6,9 @@ public class Merge_Sort {
         int[] L = new int[nL];
         int[] R = new int[nR];
 
-        for (int i = 0; i < nL; ++i)
+        for (int i = 0; i < nL; i++)
             L[i] = A[p + i];
-        for (int j = 0; j < nR; ++j)
+        for (int j = 0; j < nR; j++)
             R[j] = A[q + 1 + j];
 
         int i = 0, j = 0;

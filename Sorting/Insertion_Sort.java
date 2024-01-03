@@ -1,12 +1,4 @@
 class Insertion_Sort {
-	public static void main(String[] args) {
-		int A[] = { 235, 4, 3, 2, 41 };
-		System.out.print("Intput: ");
-		print(A);
-		INSERTION_SORT(A);
-		System.out.print("Output: ");
-		print(A);
-	}
 
 	public static void INSERTION_SORT(int A[]) {
 		for (int j = 1; j < A.length; j++) {
@@ -18,6 +10,15 @@ class Insertion_Sort {
 			}
 			A[i + 1] = key;
 		}
+	}
+
+	public static void main(String[] args) {
+		int A[] = { 235, 4, 3, 2, 41 };
+		System.out.print("Intput: ");
+		print(A);
+		INSERTION_SORT(A);
+		System.out.print("Output: ");
+		print(A);
 	}
 
 	public static void print(int[] A) {

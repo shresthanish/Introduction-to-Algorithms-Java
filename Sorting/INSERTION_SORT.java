@@ -1,4 +1,4 @@
-class SORTING {
+class Sorting {
 	public static void main(String[] args) {
 		int A[] = {235,4,3,2,41};
 		INSERTION_SORT(A);

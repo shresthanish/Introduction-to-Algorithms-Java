@@ -1,4 +1,4 @@
-class Sorting {
+class Quick_Sort {
 	public static void main(String[] args) {
 		int[] A = { 9, 4, 8, 1, 7, 90, 3, 2, 35, 6,5};
 		QUICKSORT(A, 0, A.length-1);

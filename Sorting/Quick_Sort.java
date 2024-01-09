@@ -1,5 +1,4 @@
 public class Quick_Sort {
-
     public static void QUICKSORT(int[] A, int p, int r) {
         if (p < r) {
             int q = PARTITION(A, p, r);
@@ -13,7 +12,7 @@ public class Quick_Sort {
         int i = p - 1;
         for (int j = p; j < r; j++) {
             if (A[j] <= x) {
-                i = i + 1;
+                i++;
                 exchange(A, i, j);
             }
         }
@@ -22,9 +21,9 @@ public class Quick_Sort {
     }
 
     public static void exchange(int[] A, int i, int j) {
-        int t = A[i];
+        int temp = A[i];
         A[i] = A[j];
-        A[j] = t;
+        A[j] = temp;
     }
 
     public static void main(String[] args) {

@@ -1,58 +1,64 @@
-public class Binary_Search_Tree {
+public class BINARY_SEARCH_TREE {
 
     private Node root;
-    public Binary_Search_Tree() {
-        this.root = null;
+    private static final Node NIL = null; // NIL initialized as `null`
+
+    public BINARY_SEARCH_TREE() {
+        this.root = NIL;
     }
 
     public static class Node {
         int key;
-        Node left, right, parent;
+        Node left, right, p;
 
         public Node(int key) {
             this.key = key;
-            left = right = parent = null;
+            this.left = NIL;
+            this.right = NIL;
+            this.p = NIL;
         }
     }
 
+    // Tree Traversal Methods
     public static void INORDER_TREE_WALK(Node x) {
-        if (x != null) {
+        if (x != NIL) {
             INORDER_TREE_WALK(x.left);
             System.out.print(x.key + " ");
             INORDER_TREE_WALK(x.right);
         }
     }
 
-    public static void PREORDER_TREE_WALK(Node x){
-        if (x != null){
-            System.out.print(x.key+ " ");
+    public static void PREORDER_TREE_WALK(Node x) {
+        if (x != NIL) {
+            System.out.print(x.key + " ");
             PREORDER_TREE_WALK(x.left);
             PREORDER_TREE_WALK(x.right);
         }
     }
 
-    public static void POSTORDER_TREE_WALK(Node x){
-        if (x != null){
+    public static void POSTORDER_TREE_WALK(Node x) {
+        if (x != NIL) {
             POSTORDER_TREE_WALK(x.left);
             POSTORDER_TREE_WALK(x.right);
-            System.out.print(x.key+" ");
+            System.out.print(x.key + " ");
         }
     }
 
-    public Node TREE_SEARCH(Node x, int k ){
-        if (x == null || k == x.key){
+    // Search Methods
+    public Node TREE_SEARCH(Node x, int k) {
+        if (x == NIL || k == x.key) {
             return x;
         }
-        if (k < x.key){
+        if (k < x.key) {
             return TREE_SEARCH(x.left, k);
         } else {
             return TREE_SEARCH(x.right, k);
         }
     }
 
-    public Node ITERATIVE_TREE_SEARCH(Node x,int k){
-        while (x != null && k != x.key){
-            if (k < x.key){
+    public Node ITERATIVE_TREE_SEARCH(Node x, int k) {
+        while (x != NIL && k != x.key) {
+            if (k < x.key) {
                 x = x.left;
             } else {
                 x = x.right;
@@ -61,201 +67,185 @@ public class Binary_Search_Tree {
         return x;
     }
 
-    public static Node TREE_MINIMUM(Node x){
-        while (x.left != null){
+    // Min/Max Methods
+    public static Node TREE_MINIMUM(Node x) {
+        while (x.left != NIL) {
             x = x.left;
         }
         return x;
     }
 
-    public static Node TREE_MAXIMUM(Node x){
-        while (x.right != null){
+    public static Node TREE_MAXIMUM(Node x) {
+        while (x.right != NIL) {
             x = x.right;
         }
         return x;
     }
 
-    public static Node TREE_SUCCESSOR(Node x){
-        if (x.right != null){
+    // Successor/Predecessor Methods
+    public static Node TREE_SUCCESSOR(Node x) {
+        if (x.right != NIL) {
             return TREE_MINIMUM(x.right);
         }
-        Node y = x.parent;
-        while (y != null && x == y.right){
+        Node y = x.p;
+        while (y != NIL && x == y.right) {
             x = y;
-            y = y.parent;
+            y = y.p;
         }
         return y;
     }
 
-    public static Node TREE_PREDECESSOR(Node x){
-        if (x.left != null){
+    public static Node TREE_PREDECESSOR(Node x) {
+        if (x.left != NIL) {
             return TREE_MAXIMUM(x.left);
         }
-        Node y = x.parent;
-        while (y != null && x == y.left){
+        Node y = x.p;
+        while (y != NIL && x == y.left) {
             x = y;
-            y = y.parent;
+            y = y.p;
         }
         return y;
     }
 
-    public static void TREE_INSERT(Binary_Search_Tree T, Node z){
-        Node y = null;
+    // Insert Method
+    public static void TREE_INSERT(BINARY_SEARCH_TREE T, Node z) {
+        Node y = NIL;
         Node x = T.root;
 
-        while (x != null){
+        while (x != NIL) {
             y = x;
-            if (z.key < x.key){
+            if (z.key < x.key) {
                 x = x.left;
             } else {
                 x = x.right;
             }
         }
-        z.parent = y;
+        z.p = y;
 
-        if (y == null){
+        if (y == NIL) {
             T.root = z;
-        } else if (z.key < y.key){
+        } else if (z.key < y.key) {
             y.left = z;
         } else {
             y.right = z;
         }
     }
 
-    public static void TRANSPLANT(Binary_Search_Tree T,Node u, Node v){
-        if (u.parent == null){
+    // Transplant Method
+    public static void TRANSPLANT(BINARY_SEARCH_TREE T, Node u, Node v) {
+        if (u.p == NIL) {
             T.root = v;
-        }
-        else if (u == u.parent.left){
-            u.parent.left = v;
+        } else if (u == u.p.left) {
+            u.p.left = v;
         } else {
-            u.parent.right = v;
+            u.p.right = v;
         }
 
-        if (v != null){
-            v.parent = u.parent;
+        if (v != NIL) {
+            v.p = u.p;
         }
     }
 
-    public static void TREE_DELETE(Binary_Search_Tree T,Node z){
-        if (z.left == null){
+    // Delete Method
+    public static void TREE_DELETE(BINARY_SEARCH_TREE T, Node z) {
+        if (z.left == NIL) {
             TRANSPLANT(T, z, z.right);
-        }
-        else if (z.right == null){
+        } else if (z.right == NIL) {
             TRANSPLANT(T, z, z.left);
-        }
-        else {
+        } else {
             Node y = TREE_MINIMUM(z.right);
-            if (y.parent != z){
+            if (y.p != z) {
                 TRANSPLANT(T, y, y.right);
                 y.right = z.right;
-                y.right.parent = y;
+                y.right.p = y;
             }
             TRANSPLANT(T, z, y);
             y.left = z.left;
-            y.left.parent = y;
+            y.left.p = y;
         }
     }
 
-
-    //INORDER_TREE_WALK(x);
-    //TREE_SEARCH(x,k);
-    //ITERATIVE_TREE_SEARCH(x,k);
-    //TREE_MINIMUM(x);
-    //TREE_MAXIMUM(x);
-    //TREE_SUCCESSOR(x);
-    //TREE_PREDECESSOR(x);
-    //TREE_INSERT(T,z);
-    //TRANSPLANT(T,u,v);
-    //TREE_DELETE(T,z);
-
     public static void main(String[] args) {
-        Binary_Search_Tree tree = new Binary_Search_Tree();
+        BINARY_SEARCH_TREE tree = new BINARY_SEARCH_TREE();
+
+        // First test set
         int[] keysToInsert = {6, 5, 1, 5, 7, 8};
-        for (int key: keysToInsert){
+        for (int key : keysToInsert) {
             Node newNode = new Node(key);
-            tree.TREE_INSERT(tree, newNode);
+            TREE_INSERT(tree, newNode);
         }
+
+        // Tree traversal demonstrations
         System.out.print("InOrder Tree Walk: ");
-        tree.INORDER_TREE_WALK(tree.root);
-        System.out.println();
-        System.out.print("PreOrder Tree Walk: ");
-        tree.PREORDER_TREE_WALK(tree.root);
-        System.out.println();
-        System.out.print("PostOrder Tree Walk: ");
-        tree.POSTORDER_TREE_WALK(tree.root);
+        INORDER_TREE_WALK(tree.root);
         System.out.println();
 
-        //TREE-SERACH
+        System.out.print("PreOrder Tree Walk: ");
+        PREORDER_TREE_WALK(tree.root);
+        System.out.println();
+
+        System.out.print("PostOrder Tree Walk: ");
+        POSTORDER_TREE_WALK(tree.root);
+        System.out.println();
+
+        // Search demonstration
         int keyToSearch = 8;
         Node result = tree.TREE_SEARCH(tree.root, keyToSearch);
-        if (result != null){
+        if (result != NIL) {
             System.out.println("Key " + keyToSearch + " found in the tree.");
         } else {
             System.out.println("Key " + keyToSearch + " not found in the tree.");
         }
 
-        //TREE_MINIMUM(x)
+        // Min/Max demonstrations
         Node min = TREE_MINIMUM(tree.root);
-        System.out.println("The minimum value of the tree is: "+min.key);
+        System.out.println("The minimum value of the tree is: " + min.key);
 
-        //TREE_MAXIMUM(x)
         Node max = TREE_MAXIMUM(tree.root);
-        System.out.println("The minimum value of the tree is: "+max.key);
+        System.out.println("The maximum value of the tree is: " + max.key);
         System.out.println();
 
-
-        //give me an example of TREE_SUCCESSOR using numbers.
+        // Second test set
         keysToInsert = new int[]{15, 6, 18, 3, 7, 17, 20, 2, 4, 13, 9};
-        for (int key: keysToInsert){
+        for (int key : keysToInsert) {
             Node newNode = new Node(key);
-            tree.TREE_INSERT(tree, newNode);
+            TREE_INSERT(tree, newNode);
         }
 
-        //TREE_SUCCESSOR(x)
+        // Successor demonstration
         int keyToFindSuccessor = 13;
         Node nodeToFindSuccessor = tree.TREE_SEARCH(tree.root, keyToFindSuccessor);
-        if (nodeToFindSuccessor != null) {
-            Node successor = tree.TREE_SUCCESSOR(nodeToFindSuccessor);
-            if (successor != null) {
+        if (nodeToFindSuccessor != NIL) {
+            Node successor = TREE_SUCCESSOR(nodeToFindSuccessor);
+            if (successor != NIL) {
                 System.out.println("Successor of key " + keyToFindSuccessor + ": " + successor.key);
             } else {
                 System.out.println("No successor found for key " + keyToFindSuccessor);
             }
-        } else {
-            System.out.println("Key " + keyToFindSuccessor + " not found in the tree.");
         }
 
-        //TREE_PREDECESSOR(x)
+        // Predecessor demonstration
         int keyToFind = 13;
         Node nodeToFindPredecessor = tree.TREE_SEARCH(tree.root, keyToFind);
-        if (nodeToFindPredecessor != null) {
-            Node predecessor = tree.TREE_PREDECESSOR(nodeToFindPredecessor);
-            if (predecessor != null) {
+        if (nodeToFindPredecessor != NIL) {
+            Node predecessor = TREE_PREDECESSOR(nodeToFindPredecessor);
+            if (predecessor != NIL) {
                 System.out.println("Predecessor of key " + keyToFind + ": " + predecessor.key);
             } else {
                 System.out.println("No predecessor found for key " + nodeToFindPredecessor);
             }
-        } else {
-            System.out.println("Key " + keyToFind + " not found in the tree.");
         }
 
-        // Choose a key to delete
+        // Delete demonstration
         int keyToDelete = 15;
-
-        // Find the node with the specified key
         Node nodeToDelete = tree.TREE_SEARCH(tree.root, keyToDelete);
-
-        if (nodeToDelete != null) {
-            // Perform deletion
-            tree.TREE_DELETE(tree, nodeToDelete);
-
+        if (nodeToDelete != NIL) {
+            TREE_DELETE(tree, nodeToDelete);
             System.out.println("InOrder Tree Walk (After Deletion): ");
-            tree.INORDER_TREE_WALK(tree.root);
+            INORDER_TREE_WALK(tree.root);
             System.out.println();
         } else {
             System.out.println("Key " + keyToDelete + " not found in the tree.");
         }
-
     }
 }

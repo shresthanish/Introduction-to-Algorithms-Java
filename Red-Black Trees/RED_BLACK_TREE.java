@@ -78,10 +78,9 @@ public class RED_BLACK_TREE {
     }
 
     // Insert
-    public void RB_INSERT(RED_BLACK_TREE T, int key) {
-        Node z = new Node(key); // Create a new node
-        Node y = T.NIL; // Initialize y as T.NIL
+    public void RB_INSERT(RED_BLACK_TREE T, Node z) {
         Node x = T.root; // Start from the root
+        Node y = T.NIL; // Initialize y as T.NIL
 
         // Find the appropriate position for the new node
         while (x != T.NIL) {
@@ -287,7 +286,8 @@ public class RED_BLACK_TREE {
         // Insert some nodes
         int[] keys = {41, 38, 31, 12, 19, 8};
         for (int key : keys) {
-            tree.RB_INSERT(tree, key);
+            Node newNode = tree.new Node(key);
+            tree.RB_INSERT(tree, newNode);
         }
 
         // Print the tree using in-order traversal
